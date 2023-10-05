@@ -27,11 +27,10 @@ return new class extends Migration
             $table->integer('institution_id');
             $table->timestamps();
 
-            $table->foreign('disability_id')->references('id')->on('disability_types');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('institution_id')->references('id')->on('institution_types');
-        });
-    }
+            $table->foreign('disability_id')->references('disability_code')->on('disability_types');
+            $table->foreign('role_id')->references('role_code')->on('roles');
+            $table->foreign('institution_id')->references('institution_type_code')->on('institution_types');
+        });    }
 
     /**
      * Reverse the migrations.

@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('institutions', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('institution_code');
@@ -22,11 +23,11 @@ return new class extends Migration
             $table->integer('institution_type_id');
             $table->timestamps();
 
-            $table->foreign('county_id')->references('id')->on('counties');
-            $table->foreign('sub_county_id')->references('id')->on('sub_counties');
-            $table->foreign('division_id')->references('id')->on('divisions');
-            $table->foreign('zone_id')->references('id')->on('zones');
-            $table->foreign('institution_type_id')->references('id')->on('institution_types');
+            $table->foreign('county_id')->references('county_code')->on('counties');
+            $table->foreign('sub_county_id')->references('sub_county_code')->on('sub_counties');
+            $table->foreign('division_id')->references('division_code')->on('divisions');
+            $table->foreign('zone_id')->references('zone_code')->on('zones');
+            $table->foreign('institution_type_id')->references('institution_type_code')->on('institution_types');
         });
     }
 
